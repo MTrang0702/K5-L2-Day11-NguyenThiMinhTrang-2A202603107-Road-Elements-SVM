@@ -3,7 +3,7 @@ Họ tên: Nguyễn Thị Minh Trang
 Mã học viên: 2A202603107  
 Phiên bản CVAT (Help → About): CVAT 2.48.0 (Docker local `http://localhost:9080`)  
 Guideline: Road v1.0    Lần nộp (`revision` trong manifest): 1  
-Thời điểm export (ngày giờ trên CVAT): 2026-11-20 12:13:37 UTC    Số lần nộp lại sau Rework: 0  
+Thời điểm export (ngày giờ trên CVAT): 2026-11-21 07:36:10 UTC    Số lần nộp lại sau Rework: 0  
 
 ## 1. Kiểm project
 | Mục | Đúng như guideline Road v1.0? | Ghi chú |
@@ -66,5 +66,13 @@ Bạn kiểm lô của tôi: DoPhuongManh    Quyết định nhận được: Re
 ## 8. (Tùy chọn, buffer) Từ polyline đến đích row-anchor
 | y | 720 | 680 | 640 | 600 | 560 |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| x của chúng tôi | 830 | 798 | 766 | 733 | 701 |
-| x của bạn kia | [Điền sau khi so sánh] | | | | |
+| x của chúng tôi (vạch L1, A01) | 108.5 | 157.6 | 205.5 | 251.4 | 294.8 |
+| x của bạn kia (vạch L1, A01) | 108.0 | 154.8 | 203.0 | 249.4 | 296.6 |
+
+Trả lời 3 câu hỏi:
+1. **Năm số x đó chính là đích mà một model row-anchor học cho vạch này. Nếu bạn dừng polyline sớm 40 px, hàng nào đổi thành "không có làn"?**  
+   Hàng $y = 560$ (đỉnh vạch xa nhất) sẽ đổi thành "không có làn" (giá trị `None` / rỗng).
+2. **So với bạn được kiểm (cùng ảnh): ở hàng 720 và hàng 560, hai bạn lệch nhau bao nhiêu pixel? Lệch ở hàng nào ảnh hưởng LKA nhiều hơn (slide 25)?**  
+   Ở hàng $y = 720$ hai bạn lệch nhau $0.5	ext{ px}$, ở hàng $y = 560$ lệch nhau $1.8	ext{ px}$. Lệch ở các hàng gần xe hơn ($y = 720$ và $y = 680$) ảnh hưởng tới hệ thống giữ làn đường (LKA) nhiều hơn, vì đây là vùng không gian phản ứng trực tiếp để điều khiển góc lái tức thời.
+3. **Nếu polyline vẽ từ xa về gần (ngược quy tắc 2), cách tính trên có đổi không? Script nào sẽ gặp khó?**  
+   Về mặt hình học thuần túy tọa độ giao điểm không đổi, nhưng script trích xuất đặc trưng `rowanchor.py` và pipeline huấn luyện mạng nơ-ron sẽ gặp lỗi do giả định mảng điểm luôn được sắp xếp theo thứ tự từ đáy ảnh (gần xe) lên đỉnh ảnh (xa xe).
