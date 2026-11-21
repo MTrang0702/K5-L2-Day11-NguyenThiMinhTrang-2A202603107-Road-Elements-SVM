@@ -7,3 +7,7 @@ submissions/
 out/
 *.zip
 .env
+peer_review/
+export_A01_A06/
+export_B01_B08/
+screenshots/
