@@ -1,6 +1,6 @@
 # Phiếu QC 1 — Road v1.0
 
-Lô được kiểm (học viên): DoPhuongManh        Người kiểm (học viên): Nguyễn Thị Minh Trang (2A202603107)  
+Lô được kiểm (học viên): DoPhuongManh (2A202603148)        Người kiểm (học viên): Nguyễn Thị Minh Trang (2A202603107)  
 Ngày: 2026-11-21                          Phiên bản guideline: Road v1.0  
 File được kiểm (tên + `revision` trong manifest): DoPhuongManh-front.zip (revision 1)  
 Số ảnh kiểm: 6 (A01–A06) (+ 0 ảnh thêm, ghi riêng)   Số nhãn đã kiểm (shape + tag): 67  
